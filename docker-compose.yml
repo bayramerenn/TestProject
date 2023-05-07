@@ -4,6 +4,8 @@ services:
   testproject:
     image: testproject
     container: test
+    ports:
+      - "5050:80"
     build:
       context: .
       dockerfile: TestProject/Dockerfile
