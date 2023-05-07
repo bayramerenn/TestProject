@@ -29,5 +29,11 @@ namespace TestProject.Controllers
         {
             return Ok();
         }
+
+        [HttpGet("testaaasd")]
+        public IActionResult Testaaasd()
+        {
+            return Ok();
+        }
     }
 }
