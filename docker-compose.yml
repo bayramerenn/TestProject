@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   testproject:
-    image: ${DOCKER_REGISTRY-}testproject
+    image: testproject
+    container: test
     build:
       context: .
       dockerfile: TestProject/Dockerfile
