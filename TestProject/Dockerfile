@@ -13,7 +13,7 @@ COPY . .
 WORKDIR "/src/TestProject"
 RUN dotnet build "TestProject.csproj" -c Release -o /app/build
 FROM build AS publish
-RUN dotnet publish "TestProject.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TestProject.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
