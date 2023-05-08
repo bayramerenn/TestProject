@@ -1,5 +1,10 @@
 pipeline {
   agent any
+
+    environment {
+                  containerName = 'testapi'
+                  imageName = 'testproject'
+    }
   stages {
     stage('Start container') {
               // Değişiklik yapılan servis için deploy işlemini gerçekleştir
@@ -8,10 +13,7 @@ pipeline {
                 changeset "**/TestProject/Controllers/*"
               }
               steps {
-                environment {
-                  containerName = 'testapi'
-                  imageName = 'testproject'
-              }
+              
 
                 // Konteyneri durdur ve sil
                 sh "docker stop ${containerName} || true"
