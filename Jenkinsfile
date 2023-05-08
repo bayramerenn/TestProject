@@ -20,7 +20,7 @@ pipeline {
                 sh "docker rm ${containerName} || true"
 
                 // Görüntüyü sil
-                sh "docker image rm ${imageName}:latest || true"
+                sh "docker image rm ${imageName} || true"
 
                 // Yeni Docker imajlarını oluştur ve projeyi başlat
                 sh 'docker-compose build'
