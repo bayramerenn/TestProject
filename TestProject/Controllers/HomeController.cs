@@ -36,7 +36,7 @@ namespace TestProject.Controllers
             return Ok();
         }
 
-        [HttpGet("MesutCancik2")]
+        [HttpGet("MesutCancik23")]
         public IActionResult MesutCancik()
         {
             return Ok();
