@@ -9,9 +9,9 @@ pipeline {
     stage('Start container') {
               // Değişiklik yapılan servis için deploy işlemini gerçekleştir
               //C:\Users\Bayram\source\repos\TestProject\TestProject\TestProject.csproj
-              when {
-                changeset "**/TestProject/Controllers/*"
-              }
+              // when {
+              //   changeset "**/TestProject/Controllers/*"
+              // }
               steps {
               
 
