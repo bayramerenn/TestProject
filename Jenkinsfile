@@ -23,8 +23,8 @@ pipeline {
                 sh "docker image rm ${imageName} || true"
 
                 // Yeni Docker imajlarını oluştur ve projeyi başlat
-                sh 'docker-compose build'
-                sh 'docker-compose up -d'
+                sh 'docker compose build'
+                sh 'docker compose up -d'
               }
             }
    
