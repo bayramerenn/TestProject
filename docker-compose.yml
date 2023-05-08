@@ -16,4 +16,4 @@ services:
       - "5051:80"
     build:
       context: .
-      dockerfile: WebApplicationTest/Dockerfile
+      dockerfile: WebApplication/Dockerfile
