@@ -8,8 +8,10 @@ pipeline {
                 changeset "**/TestProject/Controllers/*"
               }
               steps {
-                def containerName = 'testapi'
-                def imageName = 'testproject'
+                environment {
+                  containerName = 'testapi'
+                  imageName = 'testproject'
+              }
 
                 // Konteyneri durdur ve sil
                 sh "docker stop ${containerName} || true"
