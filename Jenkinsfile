@@ -2,11 +2,13 @@ pipeline {
   agent any
 
     environment {
-         containerName = 'testapi'
-         imageName = 'testproject'
+         testContainerName = 'testapi'
+         testImageName = 'testproject'
+         webAppContainerName = 'testapi'
+         webAppImageName = 'testproject'
     }
    stages {
-    stage('Start container') {
+    stage('Start Test Project') {
               when {
                 changeset "**/TestProject/**"
               }
@@ -14,18 +16,49 @@ pipeline {
               
 
                 // Konteyneri durdur ve sil
-                sh "docker stop ${containerName} || true"
-                sh "docker rm ${containerName} || true"
+                sh "docker stop ${testContainerName} || true"
+                sh "docker rm ${testContainerName} || true"
 
                 // Görüntüyü sil
-                sh "docker image rm ${imageName} || true"
+                sh "docker image rm ${testImageName} || true"
 
                 // Yeni Docker imajlarını oluştur ve projeyi başlat
                 sh 'docker compose build'
                 sh 'docker compose up -d'
+
+                echo "Test project basariyla tamamlandi."
+
+                catchError(buildResult: 'FAILURE') {
+                    echo 'Test project işlemi başarısız oldu!'
+        }
+      }
+    }
+    stage('WebApplication Project') {
+              when {
+                changeset "**/WebApplication/**"
               }
-            }
-   
+              steps {
+              
+
+                // Konteyneri durdur ve sil
+                sh "docker stop ${webAppContainerName} || true"
+                sh "docker rm ${webAppContainerName} || true"
+
+                // Görüntüyü sil
+                sh "docker image rm ${webAppImageName} || true"
+
+                // Yeni Docker imajlarını oluştur ve projeyi başlat
+                sh 'docker compose build'
+                sh 'docker compose up -d'
+
+                echo "Web project basariyla tamamlandi."
+
+                catchError(buildResult: 'FAILURE') {
+                    echo 'Web project işlemi başarısız oldu!'
+        }
+      }
+    }
+
   }
 
 }
