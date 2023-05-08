@@ -9,3 +9,11 @@ services:
     build:
       context: .
       dockerfile: TestProject/Dockerfile
+  webapi:
+    image: webapiproject
+    container_name: webapi
+    ports:
+      - "5051:80"
+    build:
+      context: .
+      dockerfile: WebApplicationTest/Dockerfile
