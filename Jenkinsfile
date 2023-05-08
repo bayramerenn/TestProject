@@ -2,16 +2,14 @@ pipeline {
   agent any
 
     environment {
-                  containerName = 'testapi'
-                  imageName = 'testproject'
+         containerName = 'testapi'
+         imageName = 'testproject'
     }
-  stages {
+   stages {
     stage('Start container') {
-              // Değişiklik yapılan servis için deploy işlemini gerçekleştir
-              //C:\Users\Bayram\source\repos\TestProject\TestProject\TestProject.csproj
-              // when {
-              //   changeset "**/TestProject/Controllers/*"
-              // }
+              when {
+                changeset "**/TestProject/**"
+              }
               steps {
               
 
@@ -29,10 +27,13 @@ pipeline {
             }
    
   }
+
+}
+
+
 //   post {
 //     always {
 //       sh 'docker compose down --remove-orphans -v'
 //       sh 'docker compose ps'
 //     }
 //   }
-}
