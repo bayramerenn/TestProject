@@ -8,9 +8,9 @@ pipeline {
                 changeset "**/TestProject/Controllers/*"
               }
               steps {
-                sh 'docker rm -f testapi'
-                sh 'docker image rm testproject'  // Var olan projeyi durdur
-                sh 'docker ps'
+                // sh 'docker rm -f testapi'
+                // sh 'docker image rm testproject'  // Var olan projeyi durdur
+                // sh 'docker ps'
                 sh 'docker compose build' // Yeni Docker imajlarını oluştur
                 sh 'docker compose up -d' // Yeniden oluşturulan projeyi başlat
               }
