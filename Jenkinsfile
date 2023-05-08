@@ -8,11 +8,19 @@ pipeline {
                 changeset "**/TestProject/Controllers/*"
               }
               steps {
-                sh 'docker rm -f testapi'
-                sh 'docker image rm testproject'  // Var olan projeyi durdur
-                sh 'docker ps'
-                sh 'docker compose build' // Yeni Docker imajlarını oluştur
-                sh 'docker compose up -d' // Yeniden oluşturulan projeyi başlat
+                def containerName = 'testapi'
+                def imageName = 'testproject'
+
+                // Konteyneri durdur ve sil
+                sh "docker stop ${containerName} || true"
+                sh "docker rm ${containerName} || true"
+
+                // Görüntüyü sil
+                sh "docker image rm ${imageName}:latest || true"
+
+                // Yeni Docker imajlarını oluştur ve projeyi başlat
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
               }
             }
    
