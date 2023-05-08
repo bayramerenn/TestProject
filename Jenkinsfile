@@ -2,7 +2,6 @@ pipeline {
   agent any
   stages {
     stage('Start container') {
-      steps {
               // Değişiklik yapılan servis için deploy işlemini gerçekleştir
               //C:\Users\Bayram\source\repos\TestProject\TestProject\TestProject.csproj
               when {
@@ -16,7 +15,6 @@ pipeline {
                 sh 'docker compose up -d' // Yeniden oluşturulan projeyi başlat
               }
             }
-          }
    
   }
 //   post {
