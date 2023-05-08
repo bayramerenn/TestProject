@@ -13,7 +13,7 @@ namespace TestProject.Controllers
             return Ok();
         }
 
-        [HttpGet("testa")]
+        [HttpGet("testas")]
         public IActionResult Test()
         {
             return Ok();
