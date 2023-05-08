@@ -35,5 +35,11 @@ namespace TestProject.Controllers
         {
             return Ok();
         }
+
+        [HttpGet("MesutCancik")]
+        public IActionResult MesutCancik()
+        {
+            return Ok();
+        }
     }
 }
