@@ -5,7 +5,7 @@ pipeline {
               // Değişiklik yapılan servis için deploy işlemini gerçekleştir
               //C:\Users\Bayram\source\repos\TestProject\TestProject\TestProject.csproj
               when {
-                changeset "Controllers/*"
+                changeset "**/Controllers/*"
               }
               steps {
                 sh 'docker rm -f testapi'
