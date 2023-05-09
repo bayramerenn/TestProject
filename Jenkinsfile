@@ -10,7 +10,10 @@ pipeline {
    stages {
     stage('Start Test Project') {
               when {
-                changeset "**/TestProject/**"
+                anyOf{
+                    changeset "**/TestProject/**"
+                    changeset "**/Shared/**"
+                }
               }
               steps {
               
